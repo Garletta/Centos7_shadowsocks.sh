@@ -1,5 +1,5 @@
 #!/bin/sh
-#Centos 7 shadowsocks-python.server.sh
+#Centos 7 x86_64 shadowsocks-python.server.sh
 
 #add epel-release
 yum install -y epel-release
