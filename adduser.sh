@@ -1,15 +1,24 @@
-#!/bin/sh
+#!/bin/bash
+# Create a new user of shadowsocsks
+# Enter the new port and password
 
+echo "*****************************************************"
 echo "This is a script to create a new user of shadowsocks!"
-echo "Please input a new port to create a new user:"
-read port
-echo "Please input the password of the new port:"
-read password
+echo "	# Two step to create it #"
+echo "	1.Enter a new port."
+echo "	2.Enter a new password."
+echo "*****************************************************"
 
-sed -i "6i\"${port}\":\"${password}\"," /etc/shadowsocks.json
-firewall-cmd --zone=public --add-port=${port}/tcp --permanent
-firewall-cmd --zone=public --add-port=${port}/udp --permanent
+echo "1.Please enter a new port to create a new user:"
+read PORT
+echo "2.Please enter the password of the new port:"
+read PASSWORD
+
+sed -i "/\"port_password\":{/a\		\"${PORT}\":\"${PASSWORD}\"," /etc/shadowsocks.json
+firewall-cmd --zone=public --add-port=${PORT}/tcp --permanent
+firewall-cmd --zone=public --add-port=${PORT}/udp --permanent
 firewall-cmd --reload
-ssserver -c /etc/shadowsocks.json -d restart
+ssserver -c /etc/shadowsocks.json -d stop
+ssserver -c /etc/shadowsocks.json -d start
 
-echo "success!"
+echo "success to create the new user!"
