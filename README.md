@@ -4,7 +4,7 @@
 
 ## How to use it
 
-    The first step, you can download these three scripts into your computer.
+    The first step, you can download these four scripts into your computer.
     And then, you can use shell command `scp` to upload these scripts to your host.
 
 * If your ssh port is not 22, you can input these two command to change it.
@@ -16,3 +16,4 @@
   * You need to enter a new port and password for the new user, the script will deploy it for you.
 * Execute the Third script `deleteUser.sh` by `./deleteUser.sh` to delete an old user.
   * You need to enter the port of the user to delete it.
+* Execute the fourth script `bbr.sh` by `./bbr.sh` to use BBR to accelerate.
